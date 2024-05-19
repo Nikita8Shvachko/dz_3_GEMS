@@ -1,0 +1,3 @@
+/Users/askoritan/programming/gems/cmake-build-debug/CMakeFiles/gems.dir
+/Users/askoritan/programming/gems/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/askoritan/programming/gems/cmake-build-debug/CMakeFiles/rebuild_cache.dir
