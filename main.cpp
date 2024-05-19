@@ -8,7 +8,7 @@
 #define BACKGROUND_COLOR sf::Color::Black
 
 void createWindow() {
-    // Создаем окно с размером WIDTHxHEIGHT пикселей и названием "GEMS Game"
+    // Создаем окно с размером WIDTH x HEIGHT пикселей и названием "GEMS Game"
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "GEMS Game", sf::Style::Close);
 
     // Главный цикл программы: выполняется, пока открыто окно
