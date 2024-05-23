@@ -97,29 +97,22 @@ void draw_grid( Board &board, sf::RenderWindow &window, sf::Font &font, sf::Text
 
 
     for (int i = 0; i < GRID_SIZE; ++i) {
-        std::cout << "i = " << i << std::endl;
         for (int j = 0; j < GRID_SIZE; ++j) {
-            std::cout << "j = " << j << std::endl;
             const Square &square = board.grid[i][j];
             sf::Sprite squareShape;
             // Set the texture based on the color of the square
             if (square.color == RED_COLOR) {
                 squareShape.setTexture(color1);
-                std::cout << "red" << std::endl;
             } else if (square.color == GREEN_COLOR) {
                 squareShape.setTexture(color2);
-                std::cout << "green" << std::endl;
             } else if (square.color == BLUE_COLOR) {
                 squareShape.setTexture(color3);
-                std::cout << "blue" << std::endl;
             }
             else if (square.color == BONUS_COLOR_WHITE) {
                 squareShape.setTexture(bomb_destroy_texture);
-                std::cout << "white" << std::endl;
             }
             else if (square.color == BONUS_COLOR_YELLOW) {
                 squareShape.setTexture(paint_bomb_texture);
-                std::cout << "yellow" << std::endl;
             }
 
             // Set the position of the square
@@ -127,7 +120,6 @@ void draw_grid( Board &board, sf::RenderWindow &window, sf::Font &font, sf::Text
             board.grid[i][j].y_start = j * SQUARE_SIZE+ shift_y;
 
             squareShape.setPosition(square.x_start, square.y_start);
-            std::cout<<"200"<<std::endl;
             squareShape.setScale(static_cast<float>(SQUARE_SIZE) / squareShape.getLocalBounds().width, static_cast<float>(SQUARE_SIZE) / squareShape.getLocalBounds().height);
             window.draw(squareShape);
 
@@ -339,31 +331,31 @@ void display_user_interface(sf::RenderWindow &window, sf::Font &font) {
 
     window.draw(background_sprite);
 
-    sf::RectangleShape button_start(sf::Vector2f(6 * SQUARE_SIZE, 4 * SQUARE_SIZE));
+    sf::RectangleShape button_start(sf::Vector2f(3 * SQUARE_SIZE, 1 * SQUARE_SIZE));
     button_start.setFillColor(sf::Color::White);
     button_start.setOutlineColor(sf::Color::Black);
     button_start.setOutlineThickness(5);
-    button_start.setPosition(WIDTH / 4, HEIGHT / 2);
+    button_start.setPosition(WIDTH / 2-4/3*SQUARE_SIZE, HEIGHT / 2);
 
     sf::Text text_start;
     text_start.setFont(font);
     text_start.setFillColor(sf::Color::Black);
     text_start.setCharacterSize(50);
     text_start.setString("Start");
-    text_start.setPosition(WIDTH / 4, HEIGHT / 2);
+    text_start.setPosition(WIDTH / 2-4/3*SQUARE_SIZE, HEIGHT / 2);
 
-    sf::RectangleShape button_quit(sf::Vector2f(6 * SQUARE_SIZE, 4 * SQUARE_SIZE));
+    sf::RectangleShape button_quit(sf::Vector2f(3 * SQUARE_SIZE, 1 * SQUARE_SIZE));
     button_quit.setFillColor(sf::Color::White);
     button_quit.setOutlineColor(sf::Color::Black);
     button_quit.setOutlineThickness(5);
-    button_quit.setPosition(WIDTH / 4, HEIGHT * 3 / 4);
+    button_quit.setPosition(WIDTH / 2-4/3*SQUARE_SIZE, HEIGHT * 3 / 4);
 
     sf::Text text_quit;
     text_quit.setString("Quit");
     text_quit.setFont(font);
     text_quit.setCharacterSize(50);
     text_quit.setFillColor(sf::Color::Black);
-    text_quit.setPosition(WIDTH / 4, HEIGHT * 3 / 4);
+    text_quit.setPosition(WIDTH / 2-4/3*SQUARE_SIZE, HEIGHT * 3 / 4);
     std::cerr << "UI drawn" << std::endl;
 
 
@@ -378,7 +370,7 @@ void display_user_interface(sf::RenderWindow &window, sf::Font &font) {
 
 
 void start_game() {
-    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "GEMS Game", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "GEMS Game:Nekopara edition", sf::Style::Default);
     window.setFramerateLimit(FPS);
     window.setVerticalSyncEnabled(true);
     window.clear(BACKGROUND_COLOR);
@@ -416,9 +408,9 @@ void start_game() {
     bool started = false;
     int x1 = 0, y1 = 0;
 
-    int start_button_x = WIDTH / 4;
+    int start_button_x = WIDTH / 2-4/3*SQUARE_SIZE;
     int start_button_y = HEIGHT / 2;
-    int quit_button_x = WIDTH / 4;
+    int quit_button_x = WIDTH / 2-4/3*SQUARE_SIZE;
     int quit_button_y = HEIGHT * 3 / 4;
 
     sf::Clock clock;
@@ -432,13 +424,13 @@ void start_game() {
                 return;
             }
             if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.x >= start_button_x && event.mouseButton.x <= start_button_x + 6 * SQUARE_SIZE &&
-                    event.mouseButton.y >= start_button_y && event.mouseButton.y <= start_button_y + 4 * SQUARE_SIZE) {
+                if (event.mouseButton.x >= start_button_x && event.mouseButton.x <= start_button_x + 3 * SQUARE_SIZE &&
+                    event.mouseButton.y >= start_button_y && event.mouseButton.y <= start_button_y + 1 * SQUARE_SIZE) {
                     started = true;
                 } else if (event.mouseButton.x >= quit_button_x &&
-                           event.mouseButton.x <= quit_button_x + 6 * SQUARE_SIZE &&
+                           event.mouseButton.x <= quit_button_x + 3 * SQUARE_SIZE &&
                            event.mouseButton.y >= quit_button_y &&
-                           event.mouseButton.y <= quit_button_y + 4 * SQUARE_SIZE) {
+                           event.mouseButton.y <= quit_button_y + 1 * SQUARE_SIZE) {
                     window.close();
                     return;
                 }
