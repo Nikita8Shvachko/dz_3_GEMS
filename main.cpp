@@ -10,7 +10,7 @@
 #define WIDTH 1600
 #define HEIGHT 900
 #define FPS 120
-#define FONT_FILE "Andale Mono.ttf"
+#define FONT_FILE "Fonts/Andale Mono.ttf"
 //game parameters
 #define GRID_SIZE 10
 #define SQUARE_SIZE 70
