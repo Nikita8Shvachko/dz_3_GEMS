@@ -14,7 +14,7 @@
 //game parameters
 #define GRID_SIZE 10
 #define SQUARE_SIZE 70
-
+//bonus parameters
 #define POSIBILITY_BONUS 10
 #define POSIBILITY_BOMB_DESTROY 25
 #define POSIBILITY_BONUS_PAIN 75
